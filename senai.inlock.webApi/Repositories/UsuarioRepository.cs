@@ -1,12 +1,12 @@
 ﻿using senai.inlock.webApi.Domains;
 using senai.inlock.webApi.Interface;
-using senai.inlock.webApi.Interfaces;
+
 using System.Data.SqlClient;
-using static senai.inlock.webApi.Interface.IUsuario;
+
 
 namespace senai.inlock.webApi.Repositories
 {
-    public class UsuarioRepository : IUsuario
+    public class UsuarioRepository : IUsuarioRepository
     {
         string StringConexao = "Data Source = NOTE07-S15; Initial Catalog = inlock_games; User id = sa; pwd = Senai@134; TrustServerCertificate = true";
         public UsuarioDomain Login(string _email, string _senha)
@@ -30,10 +30,7 @@ namespace senai.inlock.webApi.Repositories
                         {
                             Email = rdr["Email"].ToString(),
                             Senha = rdr["Senha"].ToString(),
-                            IdTipoUsuario = new TiposUsuario()
-                            {
-                                Titulo = rdr["Titulo"].ToString()
-                            }
+                           
                         };
                         return usuario;
                     }

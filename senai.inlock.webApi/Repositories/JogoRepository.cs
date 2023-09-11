@@ -1,12 +1,11 @@
 ﻿using senai.inlock.webApi.Domains;
 using senai.inlock.webApi.Interface;
-using senai.inlock.webApi.Interfaces;
 using System.Data.SqlClient;
 using System.Runtime;
 
 namespace senai.inlock.webApi.Repositories
 {
-    public class JogosRepository : IJogo
+    public class JogoRepository : IJogo
     {
         public DateOnly FromDateTime(string data)
         {
@@ -61,7 +60,7 @@ namespace senai.inlock.webApi.Repositories
                             Descricao = rdr["Descricao"].ToString(),
                             DataLancamento = Convert.ToDateTime(rdr["DataLancamento"].ToString()),
                             Valor = Convert.ToDouble(rdr["Valor"]),
-                            Estudio = new EstudiosDomain
+                            Estudio = new EstudioDomain
                             {
                                 IdEstudio = Convert.ToInt32(rdr["IdEstudio"]),
                                 Nome = rdr["Estudio"].ToString()

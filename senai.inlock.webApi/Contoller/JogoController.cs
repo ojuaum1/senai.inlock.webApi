@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.inlock.webApi.Domains;
-using senai.inlock.webApi.Interfaces;
+using senai.inlock.webApi.Interface;
 using senai.inlock.webApi.Repositories;
 
 namespace senai.inlock.webApi.Controllers
@@ -9,13 +9,13 @@ namespace senai.inlock.webApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class JogosController : ControllerBase
+    public class JogoController : ControllerBase
     {
         private IJogo _jogo { get; set; }
 
-        public JogosController()
+        public JogoController()
         {
-            _jogo = new JogosRepository();
+            _jogo = new JogoRepository();
         }
 
 
@@ -24,7 +24,7 @@ namespace senai.inlock.webApi.Controllers
         {
             try
             {
-                List<JogoDomain> listaJogos = _jogo.Listar();
+                List<JogoDomain> listaJogos = _jogo.ListarJogo();
                 return Ok(listaJogos);
             }
             catch (Exception erro)
